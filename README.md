@@ -2,66 +2,70 @@
 
 <img src="media/banner.svg" alt="Gaussian Pets — A portrait. A presence." width="100%">
 
-**从一张宠物照片出发，让三维形象拥有生命感。**
+**Starting from a pet portrait. Bringing a 3D companion to life.**
 
 3D Gaussian Splatting · Rigging · Living Motion
 
-[动态展示](#动态展示) · [当前进展](#当前进展) · [动画研究](docs/animation-notes.md) · [交流](https://github.com/CharlesJunyuLiao/gaussian-pets/issues)
+[Demos](#demos) · [Progress](#progress) · [Animation research](docs/animation-notes.md) · [Compare notes](https://github.com/CharlesJunyuLiao/gaussian-pets/issues)
 
 </div>
 
 ## Gaussian Pets
 
-我在做一件很具体的事：把宠物照片中的神态与毛发质感，带进一个可以呼吸、眨眼、回应人的三维角色里。
+I'm building 3D digital pets that preserve the expression and fur detail of a portrait, while adding the subtle movements that make a character feel alive.
 
-目前，我已经打通从正面宠物照片出发制作静态 3D 高斯形象、骨架绑定与呼吸动画的实验链路。接下来，我关注的是更自然的眼部表现，以及大幅动作下的形体与毛发稳定性。
+I've implemented an experimental workflow that starts from a front-facing pet photo and produces a static 3D Gaussian character, rigging, and breathing animation. My next focus is more natural eye movement and stable appearance during larger body motions.
 
-## 动态展示
+## Demos
 
 <table>
 <tr><th align="left">01 / Seated companion</th><th align="left">02 / Standing companion</th></tr>
-<tr><td><img src="media/seated-breath.gif" alt="坐姿高斯宠物：呼吸与轻微头部起伏" width="420"></td><td><img src="media/standing-breath.gif" alt="站姿高斯宠物：胸腹呼吸" width="420"></td></tr>
-<tr><td>坐姿 · 呼吸与轻微头部起伏</td><td>站姿 · 胸腹呼吸</td></tr>
+<tr><td><img src="media/seated-breath.gif" alt="Seated Gaussian pet: breathing and subtle head motion" width="420"></td><td><img src="media/standing-breath.gif" alt="Standing Gaussian pet: chest and abdomen breathing motion" width="420"></td></tr>
+<tr><td>Breathing with subtle head motion</td><td>Gentle chest and abdomen motion</td></tr>
 </table>
 
-以上均为实际高斯模型的渲染帧导出。两个形象是独立资产，展示不代表已完成坐姿与站姿之间的动作转换。GIF 为轻量预览，可在 `media/` 查看 MP4。
+These animations are exported from actual Gaussian model renders. The seated and standing characters are separate assets; they do not demonstrate a completed sit-to-stand transition. Lightweight GIF previews and higher-quality MP4 files are available in `media/`.
 
-## 当前进展
+## Progress
 
-| 能力 | 状态 |
+| Capability | Status |
 | :--- | :--- |
-| 从正面宠物照片出发制作静态高斯形象 | 已在当前宠物样例中实现 |
-| 骨架／代理绑定与动画播放 | 已完成实验链路 |
-| 呼吸与小幅待机运动 | 已实现，见上方实际演示 |
-| 眨眼 | 已有实验版本，眼睑遮挡与闭眼外观仍在优化 |
-| 坐下、站起等大幅动作 | 研究中，尚未达到满意效果 |
-| 跨品种、跨物种自动绑定 | 目标方向，尚未完成通用验证 |
+| Static Gaussian characters starting from a front-facing pet photo | Implemented for the current pet examples |
+| Skeleton / proxy binding and animation playback | Experimental workflow implemented |
+| Breathing and subtle idle motion | Implemented; actual results shown above |
+| Blinking | Experimental; eyelid occlusion and closed-eye appearance need refinement |
+| Sitting down, standing up, and larger movements | In research; not yet visually satisfactory |
+| Automatic binding across breeds and species | A target direction, not yet validated |
 
-## 我正在探索
+## What I'm exploring
 
-**让动作成立，也让外观留住。** 对毛发丰富的高斯角色，骨骼能移动只是开始；眼周覆盖、关节折叠、透明边缘与体积保持，需要一起工作。
+**Movement that preserves character.** For a furry Gaussian pet, moving the skeleton is only part of the problem. Eye coverage, joint folding, translucent boundaries, and volume preservation need to work together.
 
-我正在研究三个方向：局部眼睑表达、适合宠物解剖结构的绑定与权重，以及较大形变下的高斯协方差与外观稳定性。相关观察记录在 [Animation Notes](docs/animation-notes.md)。
+I'm exploring local eyelid representation, anatomically appropriate binding and weights, and stable Gaussian covariance and appearance under larger deformations. Observations are collected in [Animation Notes](docs/animation-notes.md).
 
-如果你也在研究 animatable Gaussians、角色绑定或数字宠物，欢迎在 [Issues](https://github.com/CharlesJunyuLiao/gaussian-pets/issues) 交流你的观察与实验。
+If you're working on animatable Gaussians, character rigging, or digital pets, feel free to share observations and experiments in [Issues](https://github.com/CharlesJunyuLiao/gaussian-pets/issues).
 
-## 仓库内容
+## About me
 
-这是项目的公开展示与动画研究仓库，包含展示页源码、实际渲染演示和进展记录。资产生成端与完整内部研发流程不包含在本次发布中；本仓库不是完整生成工具包。
+I'm **Charles Liao**. I completed my **graduate studies in Physics at Boston University in 2022** and currently work at **Shenzhen Novis Pet Intelligent Technology Co., Ltd.** I work on pet technology, product development, and hands-on engineering.
 
-本地查看展示页（Node.js 18+，无需安装依赖）：
+## What's in this repository
+
+This is the project's public showcase and animation research repository. It contains the presentation site's source code, actual rendered demos, and progress notes. The asset-generation system and complete internal development workflow are outside this release; this repository is not a complete generation toolkit.
+
+To view the showcase locally (Node.js 18+, no dependencies required):
 
 ```sh
 node serve.cjs
 ```
 
-打开 `http://127.0.0.1:8800/`。网页播放已导出的模型动画，不提供在线生成服务。
+Open `http://127.0.0.1:8800/`. The page plays exported model animations; it does not provide an online generation service.
 
-## 致谢与许可
+## Credits and licensing
 
-动画实验使用了 [KIRI 3DGS Render for Blender](https://github.com/Kiri-Innovation/3dgs-render-blender-addon) 的代理绑定与形变烘焙能力，实际高斯预览基于 [PlayCanvas](https://github.com/playcanvas/engine)。感谢这些项目和 3DGS 研究社区。
+Animation experiments use the proxy binding and deformation baking capabilities of [KIRI 3DGS Render for Blender](https://github.com/Kiri-Innovation/3dgs-render-blender-addon). Actual Gaussian previews are rendered with [PlayCanvas](https://github.com/playcanvas/engine). Thanks to these projects and the 3DGS research community.
 
-本仓库独立编写的展示页代码采用 MIT 许可；演示媒体的使用范围见 [MEDIA-LICENSE](MEDIA-LICENSE.md)。上游算法与工具归各自作者所有，详见 [CREDITS](CREDITS.md)。
+The independently authored showcase code is MIT-licensed. Demo media has separate terms in [MEDIA-LICENSE](MEDIA-LICENSE.md). Upstream algorithms and tools belong to their respective authors; see [CREDITS](CREDITS.md).
 
 ---
 

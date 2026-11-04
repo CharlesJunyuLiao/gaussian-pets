@@ -1,9 +1,9 @@
-# 演示媒体使用说明
+# Demo media terms
 
 Copyright (c) 2026 Charles Liao. All rights reserved.
 
-允许在介绍、评测或讨论本项目时展示本仓库中的 GIF、MP4 和静态演示图片，须署名 Charles Liao 并链接到本仓库。
+You may display the GIFs, MP4s, and static demo images in this repository when introducing, reviewing, or discussing this project, provided you credit Charles Liao and link to this repository.
 
-未授予将宠物演示媒体或其衍生内容用于模型训练、素材转售、商业角色资产库或冒充原创成果的许可。如需其他用途，请联系项目作者。
+No permission is granted to use the pet demo media or its derivatives for model training, resale, commercial character asset libraries, or misrepresentation as original work. Contact the project author for other uses.
 
-此说明只适用于本仓库媒体，不改变展示代码的 MIT 许可。
+These terms apply only to the repository's media and do not alter the MIT license for the showcase code.
