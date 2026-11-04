@@ -1,25 +1,29 @@
 # Animation Notes
 
-我希望宠物在动起来之后，仍然保留原来的神态和毛发观感。这份记录聚焦已生成高斯资产之后的动画问题。
+I want these pets to keep their expression and fur detail when they move. These notes focus on animation after a Gaussian asset has been created.
 
-## 已验证的范围
+## Validated scope
 
-当前有坐姿与站姿两个独立宠物资产。小幅胸腹起伏可见，骨架／代理绑定后的形变能在桌面高斯预览器中播放。坐姿展示含轻微头部起伏；站姿展示保持较克制的胸腹运动。
+There are currently two independent pet assets: seated and standing. Small chest and abdomen movements are visible, and deformations produced through skeleton / proxy binding can be played in the desktop Gaussian viewer. The seated demo includes subtle head motion; the standing demo uses restrained chest and abdomen movement.
 
-这些结果验证了当前样例的小幅动作链路，不等于任意宠物的一键自动绑定已解决。
+These results validate the small-motion workflow for the current examples. They do not establish one-click automatic binding for arbitrary pets.
 
-## 眼部表达
+## Eye expression
 
-局部高斯形变已经能驱动眼周运动，但压缩可见眼部并不等于真实眼睑闭合。目前仍可能出现眼部凹陷感、瞳孔压扁和眼周毛发牵拉。我正在评估独立眼睑覆盖与局部形变约束。
+Local Gaussian deformation can move the eye region, but compressing the visible eye is not equivalent to closing a real eyelid. Current artifacts can include a hollow-looking eye, a flattened pupil, and pulling in the surrounding fur. I'm evaluating independent eyelid coverage and local deformation constraints.
 
-有价值的对照包括：保持眼球体积；从正面和斜侧面检查遮挡；区分眼睑、眼球与周围毛发的运动支持区域；检查睁眼后能否恢复外观。
+Useful comparisons include preserving eyeball volume, inspecting occlusion from front and oblique views, separating the motion support of eyelids, eyeballs, and surrounding fur, and checking that reopening restores the original appearance.
 
-## 大幅动作
+## Larger motions
 
-坐下／站起仍未通过视觉验收。关节位置、蒙皮权重、代理几何、遮挡区域覆盖和高斯形变传递都可能影响结果，单纯增加骨骼数量不能保证修复。
+Sit-to-stand and stand-to-sit transitions have not passed visual review. Joint placement, skinning weights, proxy geometry, coverage of occluded regions, and Gaussian deformation transfer may all affect the result. Adding more bones alone does not guarantee a fix.
 
-我关注关节折叠时的体积保持、后腿和臀部连接、毛发高斯的拉伸，以及协方差变换与排序的一致性。希望用同一资产、相同视角的动作前后对照来区分这些问题。
+I'm focusing on volume preservation at folded joints, connections around the hind legs and pelvis, stretched fur Gaussians, and consistency between covariance transformation and sorting. Comparisons should use the same asset and camera before and after deformation to isolate these factors.
 
-## 交流方式
+## Discussion
 
-欢迎在 Issue 中附上研究链接、实现经验或可见的对照结果。注明问题出现的视角、动作阶段和预期变化，会更容易展开具体讨论。
+Research links, implementation experience, and visible comparison results are welcome in Issues. Including the camera angle, motion phase, and expected change makes it easier to discuss a specific problem.
+
+## Mathematical background
+
+See the illustrated [3D Gaussian Splatting primer](gaussian-splatting-primer.md) for representation, projection, compositing, and deformation mathematics.
