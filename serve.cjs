@@ -1,0 +1,5 @@
+const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
+const root=__dirname;
+const allowed=new Map([['/','index.html'],['/style.css','style.css'],['/site.js','site.js'],...['seated','standing'].flatMap(p=>['gif','mp4','png'].map(e=>['/media/'+p+'-breath.'+e,'media/'+p+'-breath.'+e]))]);
+const types={'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.mp4':'video/mp4','.gif':'image/gif','.png':'image/png'};
+http.createServer((req,res)=>{const file=allowed.get(req.url);if(!file||!['GET','HEAD'].includes(req.method)){res.writeHead(404);res.end();return;}const full=path.join(root,file);fs.stat(full,(err,st)=>{if(err){res.writeHead(404);res.end();return;}res.writeHead(200,{'Content-Type':types[path.extname(full)],'Content-Length':st.size,'X-Content-Type-Options':'nosniff'});if(req.method==='HEAD')res.end();else fs.createReadStream(full).pipe(res);});}).listen(8800,'127.0.0.1',()=>console.log('Gaussian Pets: http://127.0.0.1:8800/'));
